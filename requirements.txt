@@ -1,0 +1,6 @@
+streamlit=0.62.0
+matplotlib
+bokeh
+pandas
+numpy
+sklearn
