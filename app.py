@@ -12,10 +12,10 @@ project = st.sidebar.selectbox('Choose a project to get started', projects)
 
 title.title(project)
 
-if option == 'Wikipedia Current News Analysis':
+if project == 'Wikipedia Current News Analysis':
     run_wcea()
 
 
-elif option == 'Second Project':
+elif project == 'Second Project':
     pass
 
