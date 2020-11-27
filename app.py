@@ -8,6 +8,8 @@ title = st.empty()
 
 st.markdown('by [Justin Slud](https://justinslud.github.io/about-contact)')
 
+st.markdown('[View Source](https://github.com/justinslud/streamlit-apps)')
+
 project = st.sidebar.selectbox('Choose a project to get started', projects)
 
 title.title(project)

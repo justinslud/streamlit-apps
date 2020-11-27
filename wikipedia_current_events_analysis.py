@@ -35,7 +35,6 @@ def keyword_counts(keyword):
     counts = matches.groupby('year').text.count()
     return counts
 
-@st.cache
 def trend_plot(keyword):
     counts = keyword_counts(keyword)
     cds = ColumnDataSource(pd.DataFrame(data=counts))
@@ -50,11 +49,13 @@ def trend_plot(keyword):
 
 def run_wcea():
 
-    task = st.sidebar.selectbox('Pick a task', ['Trend Plot', 'Predict Subject'])
+    task = st.sidebar.selectbox('Pick a task', ['Predict Subject', 'Trend Plot'])
 
-    st.write(task)
+    st.markdown('## ' + task)
 
     if task == 'Predict Subject':
+
+        possible_subjects = st.markdown('Possible subjects: ' + ', '.join(top_subjects))
 
         headline = st.text_input('Your headline', default_headline)
 
@@ -67,13 +68,6 @@ def run_wcea():
         proba = pd.Series(response['all_proba'])
         
         st.bar_chart(proba.sort_values(ascending=False))
-
-        # p = figure(plot_height=250, title="Subject Probabilities")
-        # p.hbar(y=range(9), height=list(proba.values))
-        # # p.x_range(0, 1)
-
-        # st.bokeh_chart(p)
-
 
 
     elif task == 'Trend Plot':
